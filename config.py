@@ -11,6 +11,7 @@ class Config:
         self.base_url = os.environ.get('BASE_URL', 'http://api.weatherapi.com/v1').strip('/')
         self.raw_data_bucket = os.environ.get('RAW_DATA_BUCKET')
         self.cities = self._parse_cities(os.environ.get('CITIES'))
+        self.max_backfill_events = int(os.environ.get('MAX_BACKFILL_EVENTS', '24'))
         
         self._validate()
     

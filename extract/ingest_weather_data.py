@@ -43,6 +43,9 @@ def lambda_handler(event, context):
         
         # 2. Parse the input event to determine target dates and hours
         jobs = parse_event(event)
+        if(len(jobs) > config.max_backfill_events):
+            logger.warning(f"Number of jobs ({len(jobs)}) exceeds MAX_BACKFILL_EVENTS ({config.max_backfill_events}). Limiting to max.")
+        jobs = jobs[:config.max_backfill_events]  # Limit to max backfill entries
         logger.info(f"Processing {len(jobs)} job(s)")
         
         # 3. Process each job
