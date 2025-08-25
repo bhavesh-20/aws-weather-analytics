@@ -32,3 +32,5 @@ TBLPROPERTIES (
   'projection.hour.type'='integer',
   'projection.hour.range'='0,23'
 );
+
+-- MSCK REPAIR TABLE processed_weather; -- Run this command to discover new partitions after data is added
