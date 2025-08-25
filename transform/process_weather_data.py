@@ -67,7 +67,7 @@ def process_files_bulk(unprocessed_files_dict: dict):
             regexp_extract(col("input_file"), r"/([^/]+\.json)$", 1)
         ).withColumn(
             "city_id",
-            regexp_extract(col("filename"), r"^([^_]+)_", 1)
+            regexp_extract(col("filename"), r"^(.+)_\d+\.json$", 1)
         ).withColumn(
             "hour",
             regexp_extract(col("filename"), r"_(\d+)\.json$", 1).cast("int")

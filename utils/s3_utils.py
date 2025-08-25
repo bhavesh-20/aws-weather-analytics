@@ -115,22 +115,19 @@ def get_unprocessed_files_dict(raw_bucket: str, processed_bucket: str, max_days:
                 # Get processed city-hour combinations for this date
                 processed_combinations = set()
                 try:
-                    # Check if processed date directory exists
-                    s3.head_object(Bucket=processed_bucket, Key=f"processed/dt={date_str}/")
-                    
                     # List processed city-hour combinations
                     city_paginator = s3.get_paginator('list_objects_v2')
                     city_iterator = city_paginator.paginate(
                         Bucket=processed_bucket,
-                        Prefix=f"processed/dt={date_str}/",
+                        Prefix=f"processed/source_date={date_str}/",
                         Delimiter='/'
                     )
                     
                     for city_page in city_iterator:
                         if 'CommonPrefixes' in city_page:
                             for city_prefix in city_page['CommonPrefixes']:
-                                if 'city=' in city_prefix['Prefix']:
-                                    city_id = city_prefix['Prefix'].split('city=')[1].rstrip('/')
+                                if 'city_id=' in city_prefix['Prefix']:
+                                    city_id = city_prefix['Prefix'].split('city_id=')[1].rstrip('/')
                                     
                                     # List hours for this city
                                     hour_paginator = s3.get_paginator('list_objects_v2')
