@@ -5,7 +5,7 @@ from datetime import datetime, timezone, timedelta
 # Import our modules
 from config import load_config
 from utils.weather_api import fetch_historical_weather
-from utils.s3_client import save_json_to_s3, build_s3_key
+from utils.s3_utils import save_json_to_s3, build_s3_key
 
 # Set up logging
 logger = logging.getLogger()

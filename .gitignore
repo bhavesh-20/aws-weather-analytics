@@ -208,5 +208,6 @@ __marimo__/
 
 .access_token
 weather_ingestion.zip
+weather_transform.zip
 layer*.zip
 layers/build/
