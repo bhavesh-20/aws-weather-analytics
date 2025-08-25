@@ -1,0 +1,5 @@
+Created a new database: weather_analytics
+Created on demand frequency crawler
+Ran the crawler on the s3 location: bucket/processed.
+processed table is created in weather_analytics database.
+Schema verified and partitions verified.
