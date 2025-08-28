@@ -60,7 +60,6 @@ aws-weather-analytics/
 
 ## 🔧 Setup & Deployment
 
-### 1. Prerequisites
 ```bash
 # Install AWS CLI and configure credentials
 aws configure
